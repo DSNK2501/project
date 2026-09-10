@@ -102,7 +102,7 @@ const Index = () => {
             onClick={() => {
               startSession();
               trackExperienceStart();
-              navigate("/pre-assessment");
+              navigate("/about-depression");
             }}
             className="nav-button-primary group text-lg px-10 py-4 relative overflow-hidden"
             whileHover={{ scale: 1.08, boxShadow: "0 0 40px hsl(142 25% 45% / 0.5)" }}

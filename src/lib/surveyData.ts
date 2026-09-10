@@ -1,12 +1,7 @@
 // Structured survey data collection for research-grade dataset submission.
 // Single global object matching the exact column structure for Google Sheets.
 
-import {
-  preAssessmentQuestions,
-  postAssessmentQuestions,
-  LIKERT_LABELS,
-  type AssessmentQuestion,
-} from '@/data/assessmentQuestions';
+import { LIKERT_LABELS } from '@/data/assessmentQuestions';
 
 const GOOGLE_SCRIPT_URL =
   'https://script.google.com/macros/s/AKfycbynwNc7sovxUKMEx7Wc_WkCWlucqvs_tdqskRIcO97kIfTwSBBQMuoKLZOoddGKSfo/exec';

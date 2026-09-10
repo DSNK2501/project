@@ -1,27 +1,17 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
 import PageWrapper from '@/components/PageWrapper';
 import TableauEmbed from '@/components/TableauEmbed';
 import { startPageTimer, endPageTimer } from '@/lib/analytics';
-import { startPageTime, sendPageTime } from '@/lib/surveyData';
+import { startPageTime } from '@/lib/surveyData';
 
 
 const ComparativeDashboard = () => {
-  const navigate = useNavigate();
-
   useEffect(() => {
     startPageTimer('dashboard_page');
     startPageTime('dashboard');
     return () => endPageTimer('dashboard_page');
   }, []);
-
-  const handleContinue = () => {
-    endPageTimer('dashboard_page');
-    sendPageTime('dashboard');
-    navigate('/post-assessment');
-  };
 
   return (
     <PageWrapper>
@@ -44,15 +34,6 @@ const ComparativeDashboard = () => {
             staticImageRss="https://public.tableau.com/static/images/Na/NarrativeProj_v1_3/Dashboard1/1_rss.png"
           />
         </motion.section>
-
-        <div className="text-center mt-6 mb-4">
-          <button
-            onClick={handleContinue}
-            className="btn-primary inline-flex items-center gap-2"
-          >
-            To Post-Assessment <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
       </div>
     </PageWrapper>
   );

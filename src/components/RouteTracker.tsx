@@ -9,14 +9,12 @@ import { trackPageVisit } from '@/lib/surveyData';
 function toStandardPage(pathname: string): StandardPage | null {
   const map: Record<string, StandardPage> = {
     '/': 'home',
-    '/pre-assessment': 'pre_assessment',
     '/about-depression': 'about',
     '/pre-video': 'pre_video',
     '/video': 'video',
     '/video-transition': 'transition',
     '/choice': 'choice',
     '/compare': 'dashboard',
-    '/post-assessment': 'post_assessment',
     '/learned': 'learned',
     '/bibliography': 'bibliography',
   };

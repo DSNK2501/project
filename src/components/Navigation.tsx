@@ -5,14 +5,12 @@ import { useState, useEffect } from 'react';
 
 // Ordered learning flow (excluding Home)
 const flowOrder = [
-  '/pre-assessment',
   '/about-depression',
   '/pre-video',
   '/video',
   '/video-transition',
   '/choice',
   '/compare',
-  '/post-assessment',
   '/learned',
   '/bibliography',
 ];
@@ -62,10 +60,9 @@ const Navigation = () => {
   const caseNum = caseMatch ? parseInt(caseMatch[1]) : null;
   const isCase = caseNum !== null && caseNum >= 1 && caseNum <= 4;
 
-  // Determine if Next should be hidden on about-depression or post-assessment
+  // Determine if Next should be hidden until all depression phases are explored
   const isAboutPage = path === '/about-depression';
-  const isPostAssessment = path === '/post-assessment';
-  const hideNext = (isAboutPage && !aboutGateOpen) || isPostAssessment;
+  const hideNext = isAboutPage && !aboutGateOpen;
 
   return (
     <motion.nav
@@ -89,7 +86,7 @@ const Navigation = () => {
             )
           ) : path === '/transition' ? (
             <button
-              onClick={() => handleNavigate('/case/4')}
+              onClick={() => handleNavigate('/about-depression')}
               className="nav-button-secondary"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -104,7 +101,7 @@ const Navigation = () => {
             <>
               {isCase && (
                 <button
-                  onClick={() => handleNavigate(caseNum! < 4 ? `/case/${caseNum! + 1}` : '/transition')}
+                  onClick={() => handleNavigate(caseNum! < 4 ? `/case/${caseNum! + 1}` : '/video')}
                   className="nav-button-primary"
                 >
                   <span>Next</span>
@@ -116,7 +113,7 @@ const Navigation = () => {
                   onClick={() => handleNavigate(nextPath)}
                   className="nav-button-primary"
                 >
-                  <span>{path === '/compare' ? 'To Post-Assessment' : 'Next'}</span>
+                  <span>Next</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               )}
